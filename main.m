@@ -25,18 +25,11 @@ function [g, geq] = nonlcon(x)
     [sigma, Q] = sol_TenBarTruss(x(1), x(2));
     sigma_y = 250e06;
     g(1) = sqrt(Q(3)^2+Q(4)^2) - 0.02;
-    g(2) = abs(sigma(1)) - sigma_y;
-    g(3) = abs(sigma(2)) - sigma_y;
-    g(4) = abs(sigma(3)) - sigma_y;
-    g(5) = abs(sigma(4)) - sigma_y;
-    g(6) = abs(sigma(5)) - sigma_y;
-    g(7) = abs(sigma(6)) - sigma_y;
-    g(8) = abs(sigma(7)) - sigma_y;
-    g(9) = abs(sigma(8)) - sigma_y;
-    g(10) = abs(sigma(9)) - sigma_y;
-    g(11) = abs(sigma(10)) - sigma_y;
+    for i = 1:10
+        g(i+1) = abs(sigma(i)) - sigma_y;
+    end
     geq = [];
-    % 顯示疊代過程及相關結果
+    % 顯示迭代過程及相關結果
     fprintf('r1 = %f m , r2 = %f m\n', x(1), x(2));
     fprintf('displacement at node 2 = %f m\n', sqrt(Q(3)^2+Q(4)^2));
     fprintf('sigma_y(GPa) =')
