@@ -32,7 +32,7 @@ function [g, geq] = nonlcon(x)
     % 顯示迭代過程及相關結果
     fprintf('r1 = %f m , r2 = %f m\n', x(1), x(2));
     fprintf('displacement at node 2 = %f m\n', sqrt(Q(3)^2+Q(4)^2));
-    fprintf('sigma_y(GPa) =')
+    fprintf('sigma (MPa) =')
     disp(sigma/1e06);
     ro = 7860;
     L1 = 9.14; L2 = 9.14*sqrt(2);
